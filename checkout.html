@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="checkout">
+<h1>Checkout</h1>
+
+<form id="checkoutForm">
+
+<input type="text" placeholder="Full Name" required>
+<input type="text" placeholder="Address" required>
+<input type="text" placeholder="Phone" required>
+
+<!-- Payment Mode Selection -->
+<h3>Select Payment Mode</h3>
+
+<select id="paymentMode" required>
+<option value="">Choose Payment</option>
+<option value="cod">Cash On Delivery</option>
+<option value="upi">UPI</option>
+<option value="card">Debit / Credit Card</option>
+</select>
+
+<!-- UPI Section -->
+<div id="upiSection" class="paymentSection">
+<input type="text" placeholder="Enter UPI ID">
+</div>
+
+<!-- Card Section -->
+<div id="cardSection" class="paymentSection">
+
+<input type="text" placeholder="Card Number">
+<input type="text" placeholder="Card Holder Name">
+<input type="text" placeholder="Expiry Date">
+<input type="text" placeholder="CVV">
+
+</div>
+
+<button type="submit">Place Order</button>
+
+</form>
+
+<a href="index.html">
+<button class="homeBtn">🏠 Back to Home</button>
+</a>
+
+</div>
+
+<script>
+
+/* Hide Sections Initially */
+const upi = document.getElementById("upiSection");
+const card = document.getElementById("cardSection");
+
+upi.style.display = "none";
+card.style.display = "none";
+
+/* Payment Mode Switch */
+document.getElementById("paymentMode").onchange = function(){
+
+upi.style.display = "none";
+card.style.display = "none";
+
+if(this.value === "upi"){
+upi.style.display = "block";
+}
+
+if(this.value === "card"){
+card.style.display = "block";
+}
+
+};
+
+/* Order Submit */
+document.getElementById("checkoutForm").onsubmit = () => {
+
+alert("Order Placed Successfully!");
+localStorage.removeItem("cart");
+
+};
+
+</script>
+
+</body>
+</html>
+
